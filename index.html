@@ -212,6 +212,61 @@
 				</div>
 			</article>
 
+			<!-- data exploration -->
+			<article id="problem_formulation" class="wrapper style3">
+				<div class="container">
+					<header>
+						<h2>Data Exploration:</h2>
+						<!--<p>Proin odio consequat  sapien vestibulum consequat lorem dolore feugiat.</p>-->
+						<img src="dora.jpg">
+					</header>
+					<div class="column">
+						<div class="col-6 col-6-medium col-12-small">
+							<article class="box style2">
+								<!--<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>-->
+								<h3><a href="#">Normalization and Stadardization</a></h3>
+								
+								<p>The goal of this data exploration is to analyze a time series dataset of tweets collected between 2016 and 2022. We will delve into the relationship between the frequency of tweets and historical data in the Philippines. To prepare the dataset for analysis, several preprocessing steps were performed, including conversion of date formats, normalization, and standardization.</p>
+								<p><b>Data Conversion:</b></p>
+								<p><b>a. Month:</b> The month component was extracted from the timestamps, enabling analysis of monthly trends or seasonality.</p>
+
+
+								<p><b>b. Year:</b> The year of each tweet was extracted, allowing examination of the data's temporal distribution over the years.</p>
+								<p><b>Normalization and Standardization:</b>
+									<br><br>To ensure meaningful comparisons and accurate analysis, the dataset underwent normalization and standardization processes:
+									
+									<br><br><b>a. Normalization:</b> The tweet frequency data was normalized to a specific range, typically between 0 and 1. This scaling technique helps maintain the relative relationships between different tweet frequencies, facilitating comparisons across variables or units.
+									
+									<br><br><b>b. Standardization:</b> To address variations in means and variances, standardization was applied. The tweet frequency values were transformed to have a mean of 0 and a standard deviation of 1. Standardization facilitates comparison and analysis by ensuring a common scale across the dataset.</p>
+							</article>
+						</div>
+						<div class="col-6 col-6-medium col-12-small">
+							<article class="box style2">
+								<!--<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>-->
+								<h3><a href="#">Linear Interpolation</a></h3>
+								<p>Interpolation was applied to estimate missing values within the time series dataset. The interpolation method helps to fill gaps or missing data points and maintain the continuity of the time series:
+
+									<br><br><b>a. Importance of Interpolation:</b> Missing values within the dataset can occur due to various reasons, such as data collection issues or gaps in the time series. By performing interpolation, we estimate the missing values based on the neighboring data points, ensuring a more complete and continuous dataset.
+								
+									<br><br><b>b. Methodology:</b> We utilized [mention specific interpolation method(s) used, such as linear, polynomial, or spline interpolation] to estimate the missing values. These methods consider the patterns and trends in the existing data to provide reliable estimates for the missing data points.</p>
+							</article>
+						</div>
+						<div class="col-6 col-6-medium col-12-small">
+							<article class="box style2">
+								<!--<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>-->
+								<h3><a href="#">Binning</a></h3>
+								<p>Binning, or discretization, was employed to group the time series data into quarters of each year, covering the period from 2016 to 2022:
+
+									<br><br><b>a. Purpose of Binning:</b> Binning helps simplify the data and facilitates the analysis of trends and patterns within specific time intervals. By grouping the data into quarters, we can gain insights into the seasonality or temporal patterns of tweet frequency throughout the years.
+									
+									<br><br><b>b. Methodology:</b> We divided the dataset into four bins for each year, representing the quarters (Q1, Q2, Q3, Q4). This binning approach allows for a more granular analysis, enabling us to examine the variation in tweet frequency across different quarters of each year.</p>
+							</article>
+						</div>
+					</div>
+
+				</div>
+			</article>
+
 			<!-- Results -->
 			<article id="results" class="wrapper style3">
 				<div class="container">
