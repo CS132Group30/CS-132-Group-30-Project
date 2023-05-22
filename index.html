@@ -224,42 +224,62 @@
 						<div class="col-6 col-6-medium col-12-small">
 							<article class="box style2">
 								<!--<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>-->
+								<h3><a href="#">Data Preprocessing</a></h3>
+								<p>For our data exploration, we analyzed a time series dataset of tweets collected between 2016 and 2022 which contains misinformation about De Lima. We used this to see if there is a relationship between the frequency of misinforming tweets and the current events that concerned De Lima’s alleged connection to drug lords. To prepare the gathered dataset for analysis, we have done the following preprocessing steps:</p>
+
+								<p><b>Handling missing values</b></p>
+								<p>Since we mainly use date in the data exploration, we will only check the date of the tweet posted and the date of the account created. This is not an issue as Twitter automatically attaches the timestamp with the tweet itself. Twitter also shows publicly when you joined Twitter. However, Twitter does not show the day when you joined Twitter. To handle this, we only took account the month and year of the tweet posted to stay consistent with the other date.</p>
+
+								<p><b>Handling outliers</b></p>
+								<p>We removed outliers in the data especially with tweets that managed to sneak in that have dates outside 2016-2022. We used the Find method in Google Sheets if there are tweets outside in the allowed range. We have also computed the standard deviation to check if there are tweets that are 3 standard deviations away from the mean. If there is such data, we will remove the outlying data.</p>
+
+								<p><b>Ensuring Data Consistency</b></p>
+								<p>We checked the dates if there are dates that have other date formats (MM/DD/YY instead of DD/MM/YY). If there are we simply switch the format to the intended date format.</p>
+							</article>	
+						</div>
+						<div class="col-6 col-6-medium col-12-small">
+							<article class="box style2">
 								<h3><a href="#">Normalization and Stadardization</a></h3>
-								
-								<p>The goal of this data exploration is to analyze a time series dataset of tweets collected between 2016 and 2022. We will delve into the relationship between the frequency of tweets and historical data in the Philippines. To prepare the dataset for analysis, several preprocessing steps were performed, including conversion of date formats, normalization, and standardization.</p>
 								<p><b>Data Conversion:</b></p>
-								<p><b>a. Month:</b> The month component was extracted from the timestamps, enabling analysis of monthly trends or seasonality.</p>
+								<p>We have extracted the month and year of dates via MID(index, length_of_substring) command in Google Sheets which gets a substring from our string and VALUE(str) which converts a string to a number if possible.We then converted the data to be a float by Year + Month/12 so we can treat it as a number we can graph, and we can make sense of.	</p>
 
-
-								<p><b>b. Year:</b> The year of each tweet was extracted, allowing examination of the data's temporal distribution over the years.</p>
+								<p><b>a. Month:</b> Month has been extracted via MID(4, 2) which gets the character 4 to 5.</p>
+								<p><b>b. Year:</b> Year has been extracted via MID(7, 2) which gets the character 7 to 8.</p>
+								<p><i>Note: Timestamp has DD/MM/YY so MM is characters 4 and 5 while YY is characters 7 and 8.</i></p>
+								<br>
 								<p><b>Normalization and Standardization:</b>
-									<br><br>To ensure meaningful comparisons and accurate analysis, the dataset underwent normalization and standardization processes:
+									<br><br>We normalized and standardized our dataset so we can compare our data much easier:
+									<br><br><b>a. Normalization:</b> The tweet date has been normalized from 0 to 1, where 0 is the oldest and 1 is the highest. This allows us to easily see if there’s an outlier since we reduced our range to 0 and 1.
 									
-									<br><br><b>a. Normalization:</b> The tweet frequency data was normalized to a specific range, typically between 0 and 1. This scaling technique helps maintain the relative relationships between different tweet frequencies, facilitating comparisons across variables or units.
-									
-									<br><br><b>b. Standardization:</b> To address variations in means and variances, standardization was applied. The tweet frequency values were transformed to have a mean of 0 and a standard deviation of 1. Standardization facilitates comparison and analysis by ensuring a common scale across the dataset.</p>
+									<br><br><b>b. Standardization:</b> The tweet date has been standardized to see if there are outliers in the dataset. If a data is 3 standard deviations away from the mean, we will remove the data from our dataset.</p>
 							</article>
 						</div>
 						<div class="col-6 col-6-medium col-12-small">
 							<article class="box style2">
 								<!--<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>-->
 								<h3><a href="#">Linear Interpolation</a></h3>
-								<p>Interpolation was applied to estimate missing values within the time series dataset. The interpolation method helps to fill gaps or missing data points and maintain the continuity of the time series:
+								<p>Interpolation was used to take account for the missing values in the time series dataset. This allows us to see the time as a continuous value rather than scattered dots along the graph:
 
+									<br><br><b>a. Importance of Interpolation:</b> Using interpolation is important as we can estimate the missing values in the dataset due to data collection issues or gaps in the time series. By doing this, we can have a much more continuous dataset.
+									<br><br><b>b. Methodology:</b> We used linear interpolation to estimate the missing values by checking the neighboring data points. We used matplotlib.pyplot and numpy to do linear interpolation and display the graph for us.</p>
+
+<<<<<<< HEAD
+=======
 									<br><br><b>a. Importance of Interpolation:</b> Missing values within the dataset can occur due to various reasons, such as data collection issues or gaps in the time series. By performing interpolation, we estimate the missing values based on the neighboring data points, ensuring a more complete and continuous dataset.
 								
 									<br><br><b>b. Methodology:</b> We utilized linear interpolation to estimate the missing values. These methods consider the patterns and trends in the existing data to provide reliable estimates for the missing data points.</p>
+>>>>>>> main
 							</article>
 						</div>
 						<div class="col-6 col-6-medium col-12-small">
 							<article class="box style2">
 								<!--<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>-->
 								<h3><a href="#">Binning</a></h3>
-								<p>Binning, or discretization, was employed to group the time series data into quarters of each year, covering the period from 2016 to 2022:
+								<p>We used binning to group the time series data into months from 2016 to 2022:
 
-									<br><br><b>a. Purpose of Binning:</b> Binning helps simplify the data and facilitates the analysis of trends and patterns within specific time intervals. By grouping the data into quarters, we can gain insights into the seasonality or temporal patterns of tweet frequency throughout the years.
+									<br><br><b>a. Purpose of Binning:</b> Binning allows us to easily find trends and patterns in the data. Since we grouped the data into months, we can see what months have the highest or lowest frequency from 2016 to 2022.
 									
-									<br><br><b>b. Methodology:</b> We divided the dataset into four bins for each year, representing the quarters (Q1, Q2, Q3, Q4). This binning approach allows for a more granular analysis, enabling us to examine the variation in tweet frequency across different quarters of each year.</p>
+									<br><br><b>b. Methodology:</b> We divided the dataset into 12 months per year. We figured that this will allow us to connect the dots between misinformation surge and current events about De Lima without having the bin to be too small and having the divided dataset to be too large to analyze more in-depth.								</p>
 							</article>
 						</div>
 					</div>
@@ -271,11 +291,21 @@
 								The data exploration suggests that there is a possible relationship between the dates the misinformation tweets are posted and historical data. Here are some notable timeline in Leila De Lima's drug case:
 								
 								<br><br><b>July 13, 2016</b> – De Lima filed a senate resolution initiating a probe into alleged extrajudicial killings that began since Duterte took office and believed to be related to his administration's war on drugs. 
+<<<<<<< HEAD
+								<br><br><b>August 17, 2016</b> – Duterte confirmed De Lima was the person he was referring to in a previous briefing—when he said a lady senator had a driver/lover who had collected drug money to fund her campaign.
+								<br><br><b>August 20, 2016</b> – De Lima said she is willing to resign and to be shot in front of Duterte if the drug allegations against here are proven true. She added that she received reports from "credible sources" that during the elections that year, some convicts in the national penitentiary were asked to testify against her and implicate her in the illegal drug trade.
+								<br><br><b>September 15, 2016</b> – De Lima presented Edgar Matobato, who claims to be a former member of the 'Davao Death Squad'. Matobato linked Duterte to the killings perpetrated by the vigilante group—an allegation Malacanang vehemently denied. 
+								<br><br><b>February 24, 2017</b> – De Lima was arrested and detained at the Philippine National Police Headquarters in Camp Crame, Quezon City. 
+								<br><br><b>March 16 and July 19, 2017</b> – De Lima’s case caught international attention as the European Parliament called for her immediate release. In July, a 12-member delegation from EU visited De Lima at the PNP Custodial Center in Camp Crame.
+								<br><br><b>July 18, 2019</b> – The PNP-Criminal Investigation and Detection Group filed a complaint against key opposition figures, including De Lima, for inciting sedition over their supposed involvement in viral videos linking the Duterte family to drugs.
+								<br><br> Source: <i><a href ="http://www.cnnphilippines.com/news/2021/3/16/TIMELINE-Leila-De-Lima-arrest-prison-.html">CNN Philippines</a></i>
+=======
 								<br><br><b>September 15, 2016</b> – De Lima presented Edgar Matobato, who claims to be a former member of the 'Davao Death Squad'. Matobato linked Duterte to the killings perpetrated by the vigilante group—an allegation Malacanang vehemently denied. 
 								<br><br><b>February 24, 2017</b> – De Lima was arrested and detained at the Philippine National Police Headquarters in Camp Crame, Quezon City. 
 								<br><br><b>July 18, 2019</b> – The PNP-Criminal Investigation and Detection Group filed a complaint against key opposition figures, including De Lima, for inciting sedition over their supposed involvement in viral videos linking the Duterte family to drugs.
 								<br><br><b>February 2022</b> - Election Campaign season where De Lima runs for Senator.
 								<br><br> Source: CNN Philippines
+>>>>>>> main
 							</p>
 						</article>
 					</div>
@@ -283,13 +313,49 @@
 						<article class="box style2">
 							<!--<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>-->
 							<h3><a href="#">Visualization</a></h3>
+<<<<<<< HEAD
+							<p><b>Number of Tweets Containing False Information about De Lima:</b></p>
+							<img src="bar.png">
+							<br>
+							We have recorded the number of tweets spreading misinformation against Leila De Lima from our sample. Then, we created a graph to visualize the frequency of misinforming tweets per year, though we further divide the bars by months and indicate what month it is based on the color listed on the legends.
+							<br>
+							<br>
+							Upon visual inspection, the month with the highest frequency of misinformation is March 2017. Usually, we treat this as an outlier but this has not been changed because of our hypothesis that sees if an event happened or a news reported which led to a misinformation surge in Twitter.
+							<br>
+							<br>
+							This lines up with our initial hypothesis because Leila De Lima was arrested on February 24, 2017 and De Lima’s case has caught the attention of the European Parliament on March 16, 2017. The second mode, August 2016, also lines up with our initial hypothesis because this was the time where Duterte accused De Lima of having connections with drugs, which happened on August 17, 2016.
+							<br>
+							<br>
+							<p><b>Number of Accounts that Tweeted False Information about De Lima:</b></p>
+							<img src="bar2.png">
+							<br>
+							Upon visual inspection, there is an insignificant difference in amount between the accounts created that spread information between 2009-2015 and 2016-2022. However, the mode of the frequency of accounts created is March 2017 which is also the mode of the frequency of the misinforming tweets.
+=======
 							<p><b>Linear interpolation:</b></p>
 							<img src="interpolation.png">
+>>>>>>> main
 							<br>
 							<br>
 							<p><b>The Correlation between the Date of Tweets and the Date of Account Created:</b></p>
 							<img src="scatter_plot.png">
 							<br>
+<<<<<<< HEAD
+							Due to modes lining up in the frequency of tweets to the frequency of accounts created, we have plotted the creation date of the misinforming tweet against the creation date of the account spreading misinformation to see if there is a surge of new Twitter accounts to increase the volume of misinformation that have been spread. However, upon visual inspection on the graph, old accounts, or accounts made before 2016, have also spread misinformation.
+							<br>
+							<br>
+							Regardless of the insight gained from the visual inspection, we computed the Pearson correlation of the two variables which is r = 0.512 <a href = "https://www.statisticssolutions.com/free-resources/directory-of-statistical-analyses/pearsons-correlation-coefficient/">(high degree)</a>. This means that despite there being several old accounts spreading misinformation, there is still a significant amount of new accounts made to spread misinformation.							
+							<br>
+							<br>
+							<p><b>Linear interpolation:</b></p>
+							<img src="interpolation.png">
+							<br>
+							We have used matplotlib.pyplot to plot the result of linear interpolation from numpy.
+							<br>
+							<br>
+						</article>
+					</div>
+				</div>
+=======
 							<br>
 							<p><b>Number of Tweets Containing False information about De Lima:</b></p>
 							<img src="bar.png">
@@ -304,6 +370,7 @@
 					
 				
 
+>>>>>>> main
 				</div>
 			</article>
 
